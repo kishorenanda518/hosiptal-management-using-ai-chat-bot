@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>SecureEHR</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+<script language="javascript">
+
+function validate(formObj){
+	if(formObj.t1.value.length==0){
+		alert("Please Enter your age");
+		formObj.t1.focus();
+		return false;
+	}
+	if(formObj.t2.value.length==0){
+		alert("Please Enter symptoms");
+		formObj.t2.focus();
+		return false;
+	}
+	if(formObj.t3.value.length==0){
+		alert("Please upload report");
+		formObj.t3.focus();
+		return false;
+	}
+	
+	return true;
+}
+</script>
+	
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Towards a Secure Electronic Health Record System Using Blockchain Technology</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+			<li class="first current_page_item"><a href="{% url 'AddHealth' %}"><font size="" color="yellow">Share Health/Medical Report </font></a></li>
+			<li><a href="{% url 'ViewHealth' %}"><font size="" color="yellow">View Health Report</font></a></li>
+			<li><a href="{% url 'ViewPatientHospital' %}"><font size="" color="yellow">View Hospitals</font></a></li>
+			<li><a href="{% url 'index' %}"><font size="" color="yellow">Logout</font></a></li>
+			
+		</center></ul><br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'AddHealthAction' %} enctype="multipart/form-data" onsubmit="return validate(this);">
+<br/>{% csrf_token %}<br/>
+   <h2><b>Add Health Screen</b></h2>
+   
+				 <font size="" color="red"><center>{{ data|safe }}</center></font>
+						<table align="center" width="80" >
+			 <tr><td><font size="" color="black">Age</b></td><td><input type="text" name="t1" style="font-family: Comic Sans MS" size="10"/></td></tr>        
+		  
+		
+		<tr><td><font size="" color="black">Symptoms&nbsp;Description</b></td><td><input type="text" name="t2" style="font-family: Comic Sans MS" size="35"/></td></tr>
+
+		<tr><td><font size="" color="black">Upload&nbsp;Past&nbsp;Reports</b></td><td><input type="file" name="t3" style="font-family: Comic Sans MS" size="25"/></td></tr>
+
+		<tr><td><font size="" color="black">Choose&nbsp;Hospital</b></td><td><select name="t4" multiple>
+		{{ data1|safe }}
+		</select>
+		</td></tr>
+
+		 
+			<tr><td></td><td><input type="submit" value="Submit">
+			</td>
+			</table>
+				</div>	
+					
+				</div>
+				<br/><br/><br/><br/><br/><br/>
+	</body>
+</html>

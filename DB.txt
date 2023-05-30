@@ -1,0 +1,42 @@
+create database HospitalDB;
+use HospitalDB;
+
+create table adddoctor(username varchar(50) primary key,
+password varchar(50),
+emailid varchar(50),
+contact_no varchar(20),
+qualification varchar(50),
+experience_details varchar(50),
+hospital_name varchar(50),
+address varchar(50),
+speciality  varchar(250));
+
+create table addpatient(patient_id int,
+disease_description varchar(250),
+age int,
+contact_no varchar(20),
+fee_paid varchar(20),
+consult_doctor varchar(50),
+prescription varchar(250),
+visit_date date);
+
+
+create table timetable1(username varchar(50),
+time_table varchar(30),
+available_slots varchar(50));
+
+create table meetings(username varchar(50),
+meeting_date varchar(30),
+available_slots varchar(50));
+
+create table online_appointments(sername varchar(50),
+online_date varchar(30),
+available_slots varchar(50));
+
+
+
+
+
+
+
+

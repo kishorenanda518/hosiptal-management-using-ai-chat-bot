@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Hospital Management System with Chatbot</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+<script>
+function displayFullName() {
+    var request = new XMLHttpRequest();
+	var input = document.getElementById("t2").value;
+	var data = ""
+	data = data + document.getElementById("t1").value+"\n"
+	data = data + "You: "+input+"\n"
+	request.open("GET", "http://127.0.0.1:8000/ChatData?mytext="+input);
+	request.onreadystatechange = function() {
+    if(this.readyState === 4 && this.status === 200) {
+	    data = data + "Chatbot: "+this.responseText+"\n"
+		document.getElementById("t1").innerHTML = data;
+		document.getElementById("t2").value = "";
+        }
+    };
+	request.send();
+}
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Hospital Management System with Chatbot</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+			<li class="first current_page_item"><a href="{% url 'ViewPatientPrescription' %}"><font size="" color="yellow">View Prescription</font></a></li>
+			<li><a href="{% url 'ViewTimeTable' %}"><font size="" color="yellow">Doctor Timetable</font></a></li>
+			<li><a href="{% url 'ViewMeetings' %}"><font size="" color="yellow">Meetings Time</font></a></li>
+			<li><a href="{% url 'ViewAppointments' %}"><font size="" color="yellow">Online Appointments</font></a></li>
+			<li><a href="{% url 'Chat' %}"><font size="" color="yellow">Chat</font></a></li>
+			<li><a href="{% url 'index' %}"><font size="" color="yellow">Logout</font></a></li>
+			
+		</center></ul>	<br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+
+<br/>{% csrf_token %}<br/>
+   <h5><b>Patient Chat Screen with Chatbot</b></h5>
+   
+   <center><font size="3" color="red">{{ data|safe }}</font></center>
+				
+						<table align="right">
+<div id="result">
+        <textarea name="t1" id="t1" rows="20" cols="80"></textarea>
+    </div><font size="" color="black">Enter Your Symptoms
+	<input type="text" name="t2" id="t2" size="60"/>
+    <button type="button" onclick="displayFullName()">Submit</button>
+			</table>
+				</div>	
+					
+				</div>
+				<br/><br/>
+	</body>
+</html>

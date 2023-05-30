@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Hospital Management System with Chatbot</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+<script language="javascript">
+	function validate(formObj)
+	{
+	if(formObj.t1.value.length==0)
+	{
+	alert("Please Enter User ID");
+	formObj.t1.focus();
+	return false;
+	}
+	if(formObj.t2.value.length==0)
+	{
+	alert("Please Enter Password");
+	formObj.t2.focus();
+	return false;
+	}
+	return true;
+	}
+	</script>
+	<script language="javascript" type="text/javascript" src="{% static 'datetimepicker.js' %}">
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Hospital Management System with Chatbot</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+			<li class="first current_page_item"><a href="{% url 'ViewPatientReport' %}"><font size="" color="yellow">View Patients Reports </font></a></li>
+			<li class="first current_page_item"><a href="{% url 'UpdateTimeTable' %}"><font size="" color="yellow">Update Timetable </font></a></li>
+			<li class="first current_page_item"><a href="{% url 'ScheduleMeetings' %}"><font size="" color="yellow">Schedule Meetings</font></a></li>
+			<li class="first current_page_item"><a href="{% url 'OnlineAppointments' %}"><font size="" color="yellow">Online Appointments</font></a></li>
+			<li><a href="{% url 'index' %}"><font size="" color="yellow">Logout</font></a></li>
+			
+		</center></ul><br class="clearfix" />
+				</div>
+			
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'UpdateTimeTableAction' %} onsubmit="return validate(this);">
+<br/>{% csrf_token %}<br/>
+   <h5><b>Update Time Table Screen</b></h5>
+   
+   <font size="" color="red"><center>{{ data|safe }}</center></font>
+
+				
+						<table align="center" width="40" >
+			 <tr><td><font size='' color="black">Select&nbsp;Date</b></td><td>
+		  <input name="t1" type="Text" id="demo" maxlength="25" size="20" class="c2" ><a href="javascript:NewCal('demo','ddmmmyyyy',false,24)"><img src="{% static 'cal.gif' %}" width="16" height="16" border="0" alt="Pick a date"></a>
+</td></tr>
+         
+		  <tr><td><font size="" color="black">Select&nbsp;Time&nbsp;Slot</b></td><td>
+		  <select name="t2">
+		  <option value="9AM-12PM">9AM - 12PM</option>
+		  <option value="10AM-01PM">10AM - 01PM</option>
+		  <option value="11AM-02PM">11AM - 02PM</option>
+		  <option value="12PM-03PM">12PM - 03PM</option>
+		  <option value="01AM-04PM">01PM - 04PM</option>
+		  <option value="02AM-05PM">02PM - 05PM</option>
+		  <option value="05AM-08PM">05PM - 08PM</option>
+		  </select>
+		  </td></tr>
+        
+			<tr><td></td><td><input type="submit" value="Submit">
+			</td>
+			</tr>
+			</table>
+				</div>	
+					
+				</div>
+				<br/><br/>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Hospital Management System with Chatbot</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Hospital Management System with Chatbot</font></center>
+		</div>
+		<div id="slogan">
+			
+		</div>
+	</div>
+	<div id="menu">
+
+	
+		<ul><center>
+			<li class="first current_page_item"><a href="{% url 'ViewPatientPrescription' %}"><font size="" color="yellow">View Prescription</font></a></li>
+			<li><a href="{% url 'ViewTimeTable' %}"><font size="" color="yellow">Doctor Timetable</font></a></li>
+			<li><a href="{% url 'ViewMeetings' %}"><font size="" color="yellow">Meetings Time</font></a></li>
+			<li><a href="{% url 'ViewAppointments' %}"><font size="" color="yellow">Online Appointments</font></a></li>
+			<li><a href="{% url 'Chat' %}"><font size="" color="yellow">Chat</font></a></li>
+			<li><a href="{% url 'index' %}"><font size="" color="yellow">Logout</font></a></li>
+			
+		</center></ul>
+		<br class="clearfix" />
+	</div>
+	<div id="splash">
+		<img class="pic" src="{% static 'images/investor.jpg' %}" width="870" height="230" alt="" />
+	</div>
+	<br/>
+	 <font size="" color="red"><center>{{ data|safe }}</center></font><br/>
+
+<p align="justify"><font size="3" color="black"  style="font-family: Comic Sans MS">
+	Abstract:-Blockchain has emerged as a key technology for ensuring reliability and security in several application areas primarily including the healthcare sector. Blockchain is a distributed ledger where blocks of transactions are connected in a chain using the cryptographic hash function of the previous block, making it an append-only structure. Any modification on any of the blocks will generate different hash values in other blocks in a cascading manner and different link relations. In this way the blockchain achieves immutability and security.</p>
+<p align="justify"><font size="3" color="black" style="font-family: Comic Sans MS">Blockchain also involves consensus mechanisms in order to ensure synchronization among blocks and agreement between existing nodes to add a new transaction in the chain. Healthcare data is highly sensitive in nature, which consists of private information related to the diagnosis and treatment of patients. In traditional approach these data are stored by each hospital separately where sharing data is very time consuming. </p>
+<p align="justify"><font size="3" color="black" style="font-family: Comic Sans MS">Also, health data is very limited to access due to the risk of disclosure of sensitive information. In order to address these issues, the objective of this paper is to integrate blockchain technology with healthcare records/data in order to provide better sharing of data without the fear of data tampering or security breach.</p>
+</body>
+</html>
